@@ -41,6 +41,8 @@
     "dayjs": "^1.9.6",
     "esbuild": "0.25.0",
     "escape-html": "^1.0.3",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
     "flatpickr": "^4.6.6",
     "jquery": "3.5.0",
     "numeral": "^2.0.6",
