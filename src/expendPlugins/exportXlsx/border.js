@@ -1,7 +1,33 @@
 // 重新设置边框
-function setBorder(luckyBorderInfo, worksheet) {
+function setBorder(luckyBorderInfo, worksheet, mergeConfig = {}) {
   if (!Array.isArray(luckyBorderInfo)) return;
-  luckyBorderInfo.forEach(function (elem) {
+  // console.log("开始设置边框", luckyBorderInfo);
+
+  // 构建合并单元格映射，用于快速查找某个单元格是否属于合并区域
+  const mergedCellsMap = {};
+  if (mergeConfig) {
+    for (const key in mergeConfig) {
+      const merge = mergeConfig[key];
+      const startRow = merge.r;
+      const endRow = merge.r + merge.rs - 1;
+      const startCol = merge.c;
+      const endCol = merge.c + merge.cs - 1;
+
+      // 标记合并区域的所有单元格
+      for (let r = startRow; r <= endRow; r++) {
+        for (let c = startCol; c <= endCol; c++) {
+          mergedCellsMap[`${r}-${c}`] = {
+            isMainCell: r === startRow && c === startCol, // 主单元格
+            mainCellPos: { r: startRow, c: startCol }, // 主单元格位置
+            isMergedCell: true,
+            range: { startRow, endRow, startCol, endCol },
+          };
+        }
+      }
+    }
+  }
+
+  luckyBorderInfo.forEach(elem => {
     // 现在只兼容到borderType 为range的情况
     if (elem.rangeType === "range") {
       let rang = elem.range[0];
@@ -137,19 +163,47 @@ function setBorder(luckyBorderInfo, worksheet) {
       }
     }
     if (elem.rangeType === "cell") {
-      // col_index: 2
-      // row_index: 1
-      // b: {
-      //   color: '#d0d4e3'
-      //   style: 1
-      // }
       const { col_index, row_index } = elem.value;
       const borderData = Object.assign({}, elem.value);
       delete borderData.col_index;
       delete borderData.row_index;
 
-      worksheet.getCell(row_index + 1, col_index + 1).border =
-        addborderToCell(borderData);
+      // 检查当前单元格是否是合并单元格的一部分
+      const cellKey = `${row_index}-${col_index}`;
+      const mergedInfo = mergedCellsMap[cellKey];
+
+      const cell = worksheet.getCell(row_index + 1, col_index + 1);
+      let borderSettings = {};
+      const border = addborderToCell(borderData);
+
+      // 对于合并单元格，使用最边缘的边框格式
+      if (mergedInfo) {
+        const range = mergedInfo.range;
+
+        // 上边框（如果在合并区域的最上方）
+        if (row_index === range.startRow) {
+          if (border.top) borderSettings.top = border.top;
+        }
+        // 下边框（如果在合并区域的最下方）
+        if (row_index === range.endRow) {
+          if (border.bottom) borderSettings.bottom = border.bottom;
+        }
+        // 左边框（如果在合并区域的最左方）
+        if (col_index === range.startCol) {
+          if (border.left) borderSettings.left = border.left;
+        }
+        // 右边框（如果在合并区域的最右方）
+        if (col_index === range.endCol) {
+          if (border.right) borderSettings.right = border.right;
+        }
+
+        if (Object.keys(borderSettings).length > 0) {
+          cell.border = Object.assign({}, cell.border || {}, borderSettings);
+        }
+      } else {
+        // 非合并单元格直接应用边框
+        cell.border = border;
+      }
     }
   });
 }

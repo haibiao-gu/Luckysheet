@@ -1,21 +1,13 @@
-import { luckysheet } from "../../core";
 import { fillConvert, fontConvert, alignmentConvert } from "./styleUtils";
 
 // 设置单元格样式和值
 function setStyleAndValue(cellArr, worksheet) {
   if (!Array.isArray(cellArr)) return;
+  // console.log("开始设置样式和值", cellArr);
 
-  cellArr.forEach(function (row, rowid) {
-    const dbrow = worksheet.getRow(rowid + 1);
-    //设置单元格行高,默认乘以0.8倍
-    dbrow.height = luckysheet.getRowHeight([rowid])[rowid] * 0.8;
-    row.every(function (cell, columnid) {
+  cellArr.forEach((row, rowid) => {
+    row.every((cell, columnid) => {
       if (!cell) return true;
-      if (rowid === 0) {
-        const dobCol = worksheet.getColumn(columnid + 1);
-        //设置单元格列宽除以8
-        dobCol.width = luckysheet.getColumnWidth([columnid])[columnid] / 8;
-      }
       let fill = fillConvert(cell.bg);
       let font = fontConvert(
         cell.ff || "Times New Roman",
@@ -39,6 +31,12 @@ function setStyleAndValue(cellArr, worksheet) {
         //导出后取显示值
         v = cell.m;
       }
+
+      // 将数字字符串转换为数字类型
+      if (typeof v === "string" && !isNaN(v) && !isNaN(parseFloat(v))) {
+        v = parseFloat(v);
+      }
+
       if (cell.f) {
         value = { formula: cell.f, result: v };
       } else {

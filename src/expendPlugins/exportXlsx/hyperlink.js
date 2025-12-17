@@ -3,6 +3,7 @@ import { fontConvert } from "./styleUtils";
 // 设置超链接
 function setHyperlink(hyperlink, worksheet) {
   if (!hyperlink) return;
+  // console.log("开始设置超链接", hyperlink);
   for (const key in hyperlink) {
     const row_col = key.split("_");
     let cell = worksheet.getCell(

@@ -4,6 +4,7 @@ function setImages(thesheet, worksheet, workbook) {
   const images = thesheet.images;
   const config = thesheet.config;
   if (typeof images != "object" || !images) return;
+  // console.log("开始设置图片", images);
   // 获取列宽和行高配置，如果没有则使用空对象
   const columnLen = (config && config.columnlen) || {};
   const rowLen = (config && config.rowlen) || {};

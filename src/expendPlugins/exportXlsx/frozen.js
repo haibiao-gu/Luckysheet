@@ -2,6 +2,7 @@
 function setFrozen(frozen, worksheet) {
   //不存在冻结或取消冻结，则不执行后续代码
   if (!frozen || frozen.type === "cancel") return;
+  // console.log("开始冻结", frozen);
   //执行冻结操作代码
   let views = [];
   switch (frozen.type) {

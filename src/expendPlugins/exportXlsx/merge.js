@@ -1,5 +1,6 @@
 // 设置合并数据
 function setMerge(luckyMerge = {}, worksheet) {
+  // console.log("开始设置合并数据", luckyMerge);
   const mergearr = Object.values(luckyMerge);
   mergearr.forEach(function (elem) {
     // elem格式：{r: 0, c: 0, rs: 1, cs: 2}

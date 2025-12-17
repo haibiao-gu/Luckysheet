@@ -9,7 +9,6 @@ import { localExport } from "./export";
 
 // Initialize the export xlsx api
 function exportXlsx(options, config, isDemo) {
-  console.log("exportXlsx", options, config, isDemo);
   arrayRemoveItem(Store.asyncLoad, "exportXlsx");
 }
 
@@ -67,7 +66,6 @@ function fetchAndDownloadXlsx({ url, order }, success, fail) {
 }
 
 function createExportDialog(url) {
-  console.log("createExportDialog", url);
   $("#luckysheet-modal-dialog-mask").hide();
   const xlsxContainer = $("#luckysheet-export-xlsx");
 
