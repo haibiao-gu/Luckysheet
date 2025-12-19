@@ -7154,6 +7154,11 @@ export default function luckysheetHandler() {
       menuButton.cancelPaintModel();
     }
   });
+
+  $("#luckysheet-icon-save").click(function () {
+    // 调用钩子函数，触发保存操作
+    method.createHookFunction("workbookSave");
+  });
 }
 
 // 协同编辑其他用户不在操作的时候，且已经展示了用户名10秒，则用户名框隐藏

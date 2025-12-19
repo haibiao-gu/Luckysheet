@@ -12,7 +12,7 @@ import { setHidden } from "./hidden";
 
 function localExport(order, success) {
   const sheetInfo = luckysheet.toJson();
-  console.log("开始导出", order, sheetInfo);
+  // console.log("开始导出", order, sheetInfo);
   // 获取需要导出的工作表
   const exportSheet =
     order === "all" ? sheetInfo.data : [sheetInfo.data[order]];
@@ -30,7 +30,7 @@ function localExport(order, success) {
       // 网格线
       views: [{ showGridLines: sheet.showGridLines === "1" }],
     });
-    console.log("开始写入", sheet.name, sheet);
+    // console.log("开始写入", sheet.name, sheet);
     // 设置工作表样式
     setDimensions(sheet.config, worksheet);
     setStyleAndValue(sheet.data, worksheet);
@@ -45,7 +45,7 @@ function localExport(order, success) {
     setImages(sheet, worksheet, workbook);
     setHyperlink(sheet.hyperlink, worksheet);
     setFrozen(sheet.frozen, worksheet);
-    console.log("结束写入", sheet.name, worksheet);
+    // console.log("结束写入", sheet.name, worksheet);
   });
   // 写入 buffer
   workbook.xlsx.writeBuffer().then(data => {

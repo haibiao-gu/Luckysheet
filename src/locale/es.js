@@ -6240,6 +6240,7 @@ export default {
     },
   },
   toolbar: {
+    save: "Save",
     undo: "Deshacer",
     redo: "Rehacer",
     paintFormat: "Clonar formato",

@@ -6100,6 +6100,7 @@ export default {
     },
   },
   toolbar: {
+    save: "保存",
     undo: "撤銷",
     redo: "重做",
     paintFormat: "格式刷",
