@@ -1,25 +1,13 @@
-import {
-  seriesLoadScripts,
-  loadLinks,
-  arrayRemoveItem,
-} from "../../utils/util";
+import { seriesLoadScripts, loadLinks, arrayRemoveItem, } from "../../utils/util";
 import { generateRandomKey, replaceHtml } from "../../utils/chartUtil";
 import { getdatabyselection, getcellvalue } from "../../global/getdata";
 import chartInfo from "../../store";
 import Store from "../../store";
 import { luckysheet_getcelldata } from "../../function/func";
-import {
-  getSheetIndex,
-  getRangetxt,
-  getvisibledatacolumn,
-  getvisibledatarow,
-} from "../../methods/get";
+import { getSheetIndex, getRangetxt, getvisibledatacolumn, getvisibledatarow, } from "../../methods/get";
 import { rowLocation, colLocation, mouseposition } from "../../global/location";
 import { setluckysheet_scroll_status } from "../../methods/set";
-import {
-  luckysheetMoveHighlightRange2,
-  luckysheetMoveEndCell,
-} from "../../controllers/sheetMove";
+import { luckysheetMoveHighlightRange2, luckysheetMoveEndCell, } from "../../controllers/sheetMove";
 import { isEditMode } from "../../global/validate";
 import luckysheetsizeauto from "../../controllers/resize";
 
@@ -28,15 +16,15 @@ let _colLocation = colLocation;
 
 // Dynamically load dependent scripts and styles
 const dependScripts = [
-  "https://unpkg.com/vue@2.6.11/dist/vue.min.js",
-  "https://unpkg.com/vuex@3.4.0/dist/vuex.min.js",
-  "https://unpkg.com/element-ui@2.13.2/lib/index.js",
-  "https://unpkg.com/echarts@4.8.0/dist/echarts.min.js",
+  "./expendPlugins/chart/vue.min.js",
+  "./expendPlugins/chart/vuex.min.js",
+  "./expendPlugins/chart/element-ui@2.13.2.js",
+  "./expendPlugins/chart/echarts.min.js",
   "./expendPlugins/chart/chartmix.umd.min.js",
 ];
 
 const dependLinks = [
-  "https://unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css",
+  "./expendPlugins/chart/element-ui@2.13.2.css",
   "./expendPlugins/chart/chartmix.css",
   // 'http://26.26.26.1:8000/chartmix.css'
 ];
