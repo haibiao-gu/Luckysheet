@@ -27,7 +27,7 @@
     height: 100%;*/
     font-size: 12px;
     font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei",
-        "WenQuanYi Micro Hei", sans-serif;
+    "WenQuanYi Micro Hei", sans-serif;
     border: 1px solid #e5e5e5;
     background: #fff;
 }
@@ -179,6 +179,7 @@
     margin-left: 10px;
     /* position: absolute; */
 }
+
 #luckysheet_info_detail_user_img {
     vertical-align: middle;
     height: 20px;
@@ -186,6 +187,7 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
 .luckysheet_info_detail_save {
     color: #828282;
     font-size: 12px;
@@ -888,6 +890,7 @@
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
 }
+
 .luckysheet-wa-calculate-help-tool .fa-caret-down {
     position: absolute;
     top: 50%;
@@ -1041,6 +1044,7 @@
     display: flex;
     align-items: center;
 }
+
 #luckysheet-sheet-content .lucky-button-custom {
 }
 
@@ -1188,6 +1192,7 @@ div.luckysheet-sheets-m:hover {
 .luckysheet-sheet-area div.luckysheet-sheets-item:last-child {
     margin-right: 1px;
 }
+
 .luckysheet-sheet-area div.luckysheet-sheets-item:hover {
     background-color: #efefef;
     /* border-color: #a5a5a5; */
@@ -2368,6 +2373,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     padding-right: 10px;
     padding-left: 12px;
 }
+
 #luckysheet-sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
     padding-right: 0px;
     max-width: 430px;
@@ -2376,6 +2382,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .luckysheet-filter-menu div.luckysheet-cols-menuitem {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -2424,13 +2431,13 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 }
 
 .luckysheet-filter-menu
-    .luckysheet-filter-byvalue
-    .luckysheet-cols-menuitem-content
-    .luckysheet-filter-byvalue-input-icon,
+.luckysheet-filter-byvalue
+.luckysheet-cols-menuitem-content
+.luckysheet-filter-byvalue-input-icon,
 .luckysheet-filter-menu
-    .luckysheet-pivotTableFilter-byvalue
-    .luckysheet-cols-menuitem-content
-    .luckysheet-pivotTableFilter-byvalue-input-icon {
+.luckysheet-pivotTableFilter-byvalue
+.luckysheet-cols-menuitem-content
+.luckysheet-pivotTableFilter-byvalue-input-icon {
     position: absolute;
     right: 17px;
     top: 7px;
@@ -3023,6 +3030,7 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
     padding-left: 5px;
 }
+
 /* 
 #luckysheet-sheet-list .luckysheet-cols-menuitem .luckysheet-cols-menuitem-content {
     max-width: 420px;
@@ -3147,7 +3155,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 .luckysheet-modal-dialog-chart {
-    padding: 20px 10px;
+    padding: 5px;
     webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -4997,15 +5005,13 @@ fieldset[disabled] .btn-danger.focus {
 
 @keyframes load-effect {
     0% {
-        box-shadow:
-            /*
+        box-shadow: /*
           0:左移3em
           -3em:下移2em
           0:模糊距离0，即纯色
           .2em:外扩.2em
           #FFF:白色
-         */ 0 -3em
-                0 0.2em #0188fb,
+         */ 0 -3em 0 0.2em #0188fb,
             /*上*/ 2em -2em 0 0 #0188fb, /*右上*/ 3em 0 0 -0.5em #0188fb, /*右*/ 2em 2em 0 -0.5em #0188fb,
             /*右下*/ 0 3em 0 -0.5em #0188fb, /*下*/ -2em 2em 0 -0.5em #0188fb, /*左下*/ -3em 0 0 -0.5em #0188fb,
             /*左*/ -2em -2em 0 0 #0188fb;
@@ -5014,42 +5020,42 @@ fieldset[disabled] .btn-danger.focus {
 
     12.5% {
         box-shadow: 0 -3em 0 0 #0188fb, 2em -2em 0 0.2em #0188fb, 3em 0 0 0 #0188fb, 2em 2em 0 -0.5em #0188fb,
-            0 3em 0 -0.5em #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
+        0 3em 0 -0.5em #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
     }
 
     25% {
         box-shadow: 0 -3em 0 -0.5em #0188fb, 2em -2em 0 0 #0188fb, 3em 0 0 0.2em #0188fb, 2em 2em 0 0 #0188fb,
-            0 3em 0 -0.5em #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
+        0 3em 0 -0.5em #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
     }
 
     37.5% {
         box-shadow: 0 -3em 0 -0.5em #0188fb, 2em -2em 0 -0.5em #0188fb, 3em 0 0 0 #0188fb, 2em 2em 0 0.2em #0188fb,
-            0 3em 0 0 #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
+        0 3em 0 0 #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
     }
 
     50% {
         box-shadow: 0 -3em 0 -0.5em #0188fb, 2em -2em 0 -0.5em #0188fb, 3em 0 0 -0.5em #0188fb, 2em 2em 0 0 #0188fb,
-            0 3em 0 0.2em #0188fb, -2em 2em 0 0 #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
+        0 3em 0 0.2em #0188fb, -2em 2em 0 0 #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 -0.5em #0188fb;
     }
 
     62.5% {
         box-shadow: 0 -3em 0 -0.5em #0188fb, 2em -2em 0 -0.5em #0188fb, 3em 0 0 -0.5em #0188fb, 2em 2em 0 -0.5em #0188fb,
-            0 3em 0 0 #0188fb, -2em 2em 0 0.2em #0188fb, -3em 0 0 0 #0188fb, -2em -2em 0 -0.5em #0188fb;
+        0 3em 0 0 #0188fb, -2em 2em 0 0.2em #0188fb, -3em 0 0 0 #0188fb, -2em -2em 0 -0.5em #0188fb;
     }
 
     75% {
         box-shadow: 0 -3em 0 -0.5em #0188fb, 2em -2em 0 -0.5em #0188fb, 3em 0 0 -0.5em #0188fb, 2em 2em 0 -0.5em #0188fb,
-            0 3em 0 -0.5em #0188fb, -2em 2em 0 0 #0188fb, -3em 0 0 0.2em #0188fb, -2em -2em 0 0 #0188fb;
+        0 3em 0 -0.5em #0188fb, -2em 2em 0 0 #0188fb, -3em 0 0 0.2em #0188fb, -2em -2em 0 0 #0188fb;
     }
 
     87.5% {
         box-shadow: 0 -3em 0 0 #0188fb, 2em -2em 0 -0.5em #0188fb, 3em 0 0 -0.5em #0188fb, 2em 2em 0 -0.5em #0188fb,
-            0 3em 0 -0.5em #0188fb, -2em 2em 0 0 #0188fb, -3em 0 0 0 #0188fb, -2em -2em 0 0.2em #0188fb;
+        0 3em 0 -0.5em #0188fb, -2em 2em 0 0 #0188fb, -3em 0 0 0 #0188fb, -2em -2em 0 0.2em #0188fb;
     }
 
     100% {
         box-shadow: 0 -3em 0 0.2em #0188fb, 2em -2em 0 0 #0188fb, 3em 0 0 -0.5em #0188fb, 2em 2em 0 -0.5em #0188fb,
-            0 3em 0 -0.5em #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 0 #0188fb;
+        0 3em 0 -0.5em #0188fb, -2em 2em 0 -0.5em #0188fb, -3em 0 0 -0.5em #0188fb, -2em -2em 0 0 #0188fb;
     }
 }
 
@@ -6713,6 +6719,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 1;
     pointer-events: none;
 }
+
 #luckysheet-modal-dialog-cropping::after {
     content: "";
     outline: 1px solid #fff;
@@ -6724,6 +6731,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 1;
     pointer-events: none;
 }
+
 #luckysheet-modal-dialog-cropping .cropping-mask {
     filter: brightness(0.5);
     position: absolute;
@@ -6731,6 +6739,7 @@ fieldset[disabled] .btn-danger.focus {
     left: 0;
     top: 0;
 }
+
 #luckysheet-modal-dialog-cropping .cropping-content {
     position: absolute;
     overflow: hidden;
@@ -6740,6 +6749,7 @@ fieldset[disabled] .btn-danger.focus {
     width: 100%;
     height: 100%;
 }
+
 #luckysheet-modal-dialog-cropping .luckysheet-modal-dialog-resize {
     border: none;
     position: absolute;
@@ -6751,6 +6761,7 @@ fieldset[disabled] .btn-danger.focus {
     right: 0;
     pointer-events: all;
 }
+
 #luckysheet-modal-dialog-cropping .resize-item {
     width: 0;
     height: 0;
@@ -6759,23 +6770,27 @@ fieldset[disabled] .btn-danger.focus {
     position: absolute;
     z-index: 3;
 }
+
 #luckysheet-modal-dialog-cropping .resize-item::before {
     content: "";
     display: block;
     position: absolute;
     background: #000;
 }
+
 #luckysheet-modal-dialog-cropping .resize-item::after {
     content: "";
     display: block;
     position: absolute;
     background: #000;
 }
+
 #luckysheet-modal-dialog-cropping .lt {
     left: 0;
     top: 0;
     cursor: nwse-resize;
 }
+
 #luckysheet-modal-dialog-cropping .lt::before {
     width: 18px;
     height: 4px;
@@ -6784,6 +6799,7 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .lt::after {
     width: 4px;
     height: 14px;
@@ -6792,11 +6808,13 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .mt {
     left: 50%;
     top: 0;
     cursor: ns-resize;
 }
+
 #luckysheet-modal-dialog-cropping .mt::before {
     width: 18px;
     height: 4px;
@@ -6806,11 +6824,13 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .rt {
     right: 0;
     top: 0;
     cursor: nesw-resize;
 }
+
 #luckysheet-modal-dialog-cropping .rt::before {
     width: 18px;
     height: 4px;
@@ -6819,6 +6839,7 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .rt::after {
     width: 4px;
     height: 14px;
@@ -6827,11 +6848,13 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .lm {
     left: 0;
     top: 50%;
     cursor: ew-resize;
 }
+
 #luckysheet-modal-dialog-cropping .lm::before {
     width: 4px;
     height: 18px;
@@ -6841,11 +6864,13 @@ fieldset[disabled] .btn-danger.focus {
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .rm {
     right: 0;
     top: 50%;
     cursor: ew-resize;
 }
+
 #luckysheet-modal-dialog-cropping .rm::before {
     width: 4px;
     height: 18px;
@@ -6855,11 +6880,13 @@ fieldset[disabled] .btn-danger.focus {
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .lb {
     left: 0;
     bottom: 0;
     cursor: nesw-resize;
 }
+
 #luckysheet-modal-dialog-cropping .lb::before {
     width: 18px;
     height: 4px;
@@ -6868,6 +6895,7 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .lb::after {
     width: 4px;
     height: 14px;
@@ -6876,11 +6904,13 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .rb {
     right: 0;
     bottom: 0;
     cursor: nwse-resize;
 }
+
 #luckysheet-modal-dialog-cropping .rb::before {
     width: 18px;
     height: 4px;
@@ -6889,6 +6919,7 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-top: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .rb::after {
     width: 4px;
     height: 14px;
@@ -6897,11 +6928,13 @@ fieldset[disabled] .btn-danger.focus {
     border-left: 2px solid #fff;
     border-top: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-cropping .mb {
     left: 50%;
     bottom: 0;
     cursor: ns-resize;
 }
+
 #luckysheet-modal-dialog-cropping .mb::before {
     width: 18px;
     height: 4px;
@@ -6911,52 +6944,67 @@ fieldset[disabled] .btn-danger.focus {
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .luckysheet-modal-dialog-slider-content {
     background-color: #fff;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box {
     border-bottom: 1px solid #e1e4e8;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-title {
     padding: 10px 20px;
     font-weight: 600;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-radios {
     padding: 10px 30px;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .radio-item {
     margin-bottom: 10px;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .radio-item:last-child {
     margin-bottom: 0;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .radio-item input {
     vertical-align: sub;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-checkbox {
     padding: 10px 30px;
     border-top: 1px solid #e1e4e8;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-checkbox input {
     vertical-align: middle;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .slider-box-borderConfig {
     padding: 10px 30px;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item {
     margin-bottom: 10px;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item:last-child {
     margin-bottom: 0;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item label {
     display: inline-block;
     width: 40px;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item input {
     width: 130px;
     padding: 5px;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item .imgItemBorderColor {
     display: inline-block;
     width: 20px;
@@ -6966,15 +7014,18 @@ fieldset[disabled] .btn-danger.focus {
     vertical-align: middle;
     cursor: pointer;
 }
+
 #luckysheet-modal-dialog-slider-imageCtrl .slider-box .border-item .imgItemBorderColor span {
     display: block;
     width: 100%;
     height: 100%;
 }
+
 #luckysheet-imageCtrl-colorSelect-dialog .currenColor {
     font-size: 12px;
     margin-bottom: 5px;
 }
+
 #luckysheet-imageCtrl-colorSelect-dialog .currenColor span {
     display: inline-block;
     width: 16px;
@@ -6984,6 +7035,7 @@ fieldset[disabled] .btn-danger.focus {
     margin-bottom: -5px;
     cursor: pointer;
 }
+
 #luckysheet-modal-dialog-activeImage,
 #luckysheet-modal-dialog-cropping {
     background: none;
@@ -7005,29 +7057,35 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-modal-dialog-activeImage .luckysheet-modal-dialog-content {
     background: none;
 }
+
 /* 单元格日期选择 */
 .cell-date-picker {
     position: absolute;
     display: none;
 }
+
 /* 插入链接 */
 #luckysheet-insertLink-dialog {
     user-select: none;
 }
+
 #luckysheet-insertLink-dialog .box {
     font-size: 12px;
 }
+
 #luckysheet-insertLink-dialog .box-item {
     height: 30px;
     line-height: 30px;
     margin-bottom: 10px;
 }
+
 #luckysheet-insertLink-dialog .box-item label {
     display: inline-block;
     width: 90px;
     text-align: right;
     margin-right: 10px;
 }
+
 #luckysheet-insertLink-dialog .box-item input {
     width: 200px;
     height: 30px;
@@ -7036,6 +7094,7 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
+
 #luckysheet-insertLink-dialog .box-item select {
     width: 200px;
     height: 30px;
@@ -7044,45 +7103,56 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
+
 /* 数据验证 */
 #luckysheet-dataVerification-dialog {
     user-select: none;
 }
+
 #luckysheet-dataVerification-dialog .box {
     font-size: 12px;
 }
+
 #luckysheet-dataVerification-dialog .box select {
     width: 100%;
     height: 30px;
     border-color: #d4d4d4;
     outline-style: none;
 }
+
 #luckysheet-dataVerification-dialog .box input::-webkit-input-placeholder {
     color: #d4d4d4;
 }
+
 #luckysheet-dataVerification-dialog .box input:-moz-placeholder {
     color: #d4d4d4;
 }
+
 #luckysheet-dataVerification-dialog .box input::-moz-placeholder {
     color: #d4d4d4;
 }
+
 #luckysheet-dataVerification-dialog .box input:-ms-input-placeholder {
     color: #d4d4d4;
 }
+
 #luckysheet-dataVerification-dialog .box-item {
     padding: 10px;
     border-bottom: 1px solid #e1e4e8;
 }
+
 #luckysheet-dataVerification-dialog .box-item .box-item-title {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 10px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .range {
     width: 100%;
     height: 30px;
     border: 1px solid #d4d4d4;
 }
+
 #luckysheet-dataVerification-dialog .box-item .range input {
     width: calc(100% - 30px);
     height: 30px;
@@ -7092,6 +7162,7 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
+
 #luckysheet-dataVerification-dialog .box-item .range i.fa-table {
     float: right;
     margin-top: 9px;
@@ -7099,65 +7170,80 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
     color: #6598f3;
 }
+
 #luckysheet-dataVerification-dialog .box-item .multi {
     margin-top: 10px;
     line-height: 30px;
     font-size: 12px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .multi input {
     vertical-align: text-top;
 }
+
 #luckysheet-dataVerification-dialog .box-item .show-box {
     margin-top: 10px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .check-box {
     height: 30px;
     line-height: 30px;
     margin-bottom: 10px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .check-box:last-child {
     margin-bottom: 0;
 }
+
 #luckysheet-dataVerification-dialog .box-item .check-box input {
     height: 30px;
     padding: 0 10px;
     border: 1px solid #d4d4d4;
     box-sizing: border-box;
 }
+
 #luckysheet-dataVerification-dialog .box-item .check {
     line-height: 30px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .check input {
     vertical-align: text-top;
 }
+
 #luckysheet-dataVerification-dialog .box-item .input {
     height: 30px;
     line-height: 30px;
     margin-top: 10px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .input input {
     height: 30px;
     padding: 4px 10px 4px 10px;
     border: 1px solid #d4d4d4;
     box-sizing: border-box;
 }
+
 #luckysheet-dataVerification-dialog .box-item .input1 input {
     width: 150px;
 }
+
 #luckysheet-dataVerification-dialog .box-item .input2 input {
     width: 100%;
 }
+
 #luckysheet-dataVerification-dialog .box-item .input span {
     display: inline-block;
     width: 30px;
     text-align: center;
 }
+
 #luckysheet-dataVerification-dialog .data-verification-hint-text {
     width: 100%;
     height: 30px;
     border: 1px solid #d4d4d4;
     margin-top: 10px;
 }
+
 #luckysheet-dataVerification-dialog .data-verification-hint-text input {
     display: block;
     width: 100%;
@@ -7167,15 +7253,18 @@ fieldset[disabled] .btn-danger.focus {
     outline-style: none;
     box-sizing: border-box;
 }
+
 #luckysheet-dataVerification-dialog .show-box .show-box-item {
     display: none;
 }
+
 #luckysheet-dataVerificationRange-dialog input {
     height: 30px;
     padding: 0 10px;
     border: 1px solid #d4d4d4;
     outline-style: none;
 }
+
 #luckysheet-dataVerification-dropdown-btn {
     display: none;
     width: 20px;
@@ -7185,11 +7274,13 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 10;
     overflow: hidden;
 }
+
 #luckysheet-formula-refresh {
     display: none;
     position: absolute;
     z-index: 10;
 }
+
 #luckysheet-dataVerification-dropdown-btn::after {
     content: "";
     width: 10px;
@@ -7201,6 +7292,7 @@ fieldset[disabled] .btn-danger.focus {
     margin-left: -5px;
     margin-top: -5px;
 }
+
 #luckysheet-dataVerification-dropdown-List {
     display: none;
     background-color: #fff;
@@ -7210,6 +7302,7 @@ fieldset[disabled] .btn-danger.focus {
     z-index: 10000;
     box-sizing: border-box;
 }
+
 #luckysheet-dataVerification-dropdown-List .dropdown-List-item {
     padding: 5px 10px;
     box-sizing: border-box;
@@ -7219,6 +7312,7 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-dataVerification-dropdown-List .dropdown-List-item.multi {
     padding-left: 0;
 }
+
 #luckysheet-dataVerification-dropdown-List .dropdown-List-item.multi:before {
     content: "";
     width: 14px;
@@ -7230,12 +7324,15 @@ fieldset[disabled] .btn-danger.focus {
     display: inline-block;
     margin-right: 2px;
 }
+
 #luckysheet-dataVerification-dropdown-List .dropdown-List-item.multi.checked:before {
     content: "\e7c8";
 }
+
 #luckysheet-dataVerification-dropdown-List .dropdown-List-item:hover {
     background-color: #e1e1e1;
 }
+
 #luckysheet-dataVerification-showHintBox {
     display: none;
     padding: 10px;

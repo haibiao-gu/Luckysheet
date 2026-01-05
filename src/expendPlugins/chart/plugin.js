@@ -26,7 +26,6 @@ const dependScripts = [
 const dependLinks = [
   "./expendPlugins/chart/element-ui@2.13.2.css",
   "./expendPlugins/chart/chartmix.css",
-  // 'http://26.26.26.1:8000/chartmix.css'
 ];
 
 // Initialize the chart component
@@ -36,7 +35,6 @@ function chart(options, config, isDemo) {
 
   seriesLoadScripts(dependScripts, null, function () {
     const store = new Vuex.Store();
-    // console.info("chartmix::", chartmix.default);
 
     Vue.use(chartmix.default, { store });
     let outDom = document.getElementsByTagName("body")[0];
@@ -64,7 +62,50 @@ function chart(options, config, isDemo) {
       display: "none",
     });
 
-    chartInfo.createChart = chartmix.default.createChart;
+    // chartInfo.createChart = chartmix.default.createChart;
+    // 修改为包装后的方法
+    chartInfo.createChart = function (...args) {
+      // 调用原方法创建图表
+      const newChart = chartmix.default.createChart(...args);
+
+      // 处理新创建的折线图
+      if (
+        newChart &&
+        newChart.chartOptions &&
+        newChart.chartOptions.chartType === "line"
+      ) {
+        const yAxis = newChart.chartOptions.defaultOption.axis.yAxisLeft;
+        if (yAxis) {
+          // 1. 提取数据计算最小值（逻辑同上）
+          const chartData = newChart.chartOptions.chartData;
+          let allValues = [];
+          chartData.forEach(row => {
+            row.forEach(cell => {
+              if (typeof cell.v === "number" && !isNaN(cell.v)) {
+                allValues.push(cell.v);
+              }
+            });
+          });
+
+          // 2. 设置Y轴起始值
+          if (allValues.length > 0) {
+            const dataMin = Math.min(...allValues);
+            const padding = (Math.max(...allValues) - dataMin) * 0.1;
+            yAxis.tickLabel.min = dataMin - padding;
+          } else {
+            yAxis.tickLabel.min = "dataMin";
+          }
+
+          // 更新到存储
+          chartInfo.chartparam.insertToStore({
+            chart_id: newChart.chart_id,
+            chartOptions: newChart.chartOptions,
+          });
+        }
+      }
+
+      return newChart;
+    };
     chartInfo.highlightChart = chartmix.default.highlightChart;
     chartInfo.deleteChart = chartmix.default.deleteChart;
     chartInfo.resizeChart = chartmix.default.resizeChart;
@@ -143,6 +184,32 @@ function renderCharts(chartLists, isDemo) {
     let chart_json;
     chart_json = chartInfo.chartparam.getChartJson(chart.chart_id);
 
+    if (chart_json && chart_json.chartOptions) {
+      // 新增：处理折线图Y轴起始值
+      const yAxis = chart_json.chartOptions.defaultOption.axis.yAxisLeft; // 获取左侧Y轴配置（实际显示的Y轴）
+      if (yAxis) {
+        // 1. 从chartData中提取所有数值，计算最小值
+        const chartData = chart_json.chartOptions.chartData;
+        let allValues = [];
+        // 遍历chartData，收集所有有效数值
+        chartData.forEach(row => {
+          row.forEach(cell => {
+            if (typeof cell.v === "number" && !isNaN(cell.v)) {
+              allValues.push(cell.v);
+            }
+          });
+        });
+
+        // 2. 计算最小值并设置Y轴起始值（留10%余量）
+        if (allValues.length > 0) {
+          const dataMin = Math.min(...allValues);
+          const padding = (Math.max(...allValues) - dataMin) * 0.1; // 10%余量
+          yAxis.tickLabel.min = dataMin - padding; // 起始值 = 最小值 - 余量
+        } else {
+          yAxis.tickLabel.min = "dataMin"; // 无数据时使用图表库默认计算
+        }
+      }
+    }
     chartInfo.chartparam.renderChart({
       chart_id: chart.chart_id,
       chartOptions: chart_json,
@@ -311,46 +378,8 @@ function renderCharts(chartLists, isDemo) {
 }
 
 function jfrefreshchartall(flowdata1, r_st, r_ed, c_st, c_ed) {
-  // let chart = chartInfo.currentChart;
-  // if (!chart) {
-  //     return;
-  // }
-  // if (chart.rangeArray.length == 1) {
-  //     var row = chart.rangeArray[0].row;
-  //     var column = chart.rangeArray[0].column;
-  //     //不在范围内的不更新
-  //     if (r_st > row[1] || r_ed < row[0] || c_st > column[1] || c_ed < column[0]) {
-  //         return;
-  //     }
-  //根据原有的范围取得数据
-  // var luckysheetgetcellrange = formula.getcellrange(chart.rangeTxt);
-  // var sheetIndex = luckysheetgetcellrange.sheetIndex == -1 ? 0 : luckysheetgetcellrange.sheetIndex; //sheetIndex为-1时，转化为0
-  // var sheetName = Store.luckysheetfile.find((item) => item.index === sheetIndex).name;
-  // var sheetName;
-  // Store.luckysheetfile.forEach((item) => {
-  //     if (item.chart && item.chart.length) {
-  //         item.chart.forEach((ele) => {
-  //             if (ele.chart_id === chart.chart_id) {
-  //                 sheetName = item.name;
-  //             }
-  //         });
-  //     }
-  // });
-  // var selection = {
-  //     row: luckysheetgetcellrange.row,
-  //     column: luckysheetgetcellrange.column,
-  //     dataSheetIndex: sheetIndex,
-  // }; //数组
-  // var getcelldata = luckysheet_getcelldata(sheetName + "!" + chart.rangeTxt);
-  // if (typeof getcelldata === "object" && getcelldata.length != 0 && getcelldata.data.length != null) {
-  //     //getcelldata有值，且不为空数组 && getcelldata.data为二维数组
-  //     var chartData = getcelldata.data;
-  //     chartInfo.chartparam.changeChartCellData(chart.chart_id, chartData);
-  // }
-  // }
-
   const sheetInfo = Store.luckysheetfile.find(
-    item => item.index == Store.currentSheetIndex
+    item => item.index === Store.currentSheetIndex
   );
   const charts = sheetInfo.chart;
   charts &&
@@ -360,7 +389,7 @@ function jfrefreshchartall(flowdata1, r_st, r_ed, c_st, c_ed) {
       );
       if (
         typeof getcelldata === "object" &&
-        getcelldata.length != 0 &&
+        getcelldata.length !== 0 &&
         getcelldata.data.length != null
       ) {
         //getcelldata有值，且不为空数组 && getcelldata.data为二维数组
@@ -373,7 +402,7 @@ function jfrefreshchartall(flowdata1, r_st, r_ed, c_st, c_ed) {
 function chart_selection() {
   return {
     create: function () {
-      var chart_json = chartInfo.currentChart;
+      const chart_json = chartInfo.currentChart;
 
       if (chart_json.rangeArray.length > 1) {
         return;
@@ -1231,7 +1260,6 @@ function createLuckyChart(width, height, left, top) {
   );
 
   let chartData = getdatabyselection();
-  console.dir(chartData);
 
   let chart_id = generateRandomKey("chart");
 
@@ -1259,7 +1287,32 @@ function createLuckyChart(width, height, left, top) {
     rangeTxt
   );
   // chartInfo.currentChart = chart_json.chartOptions
-  // console.dir(JSON.stringify(chart_json));
+  if (chart_json && chart_json.chartOptions) {
+    // 处理新创建的折线图
+    const yAxis = chart_json.chartOptions.defaultOption.axis.yAxisLeft;
+    if (yAxis) {
+      // 1. 提取数据计算最小值（逻辑同上）
+      const chartData = chart_json.chartOptions.chartData;
+      let allValues = [];
+      chartData.forEach(row => {
+        row.forEach(cell => {
+          if (typeof cell.v === "number" && !isNaN(cell.v)) {
+            allValues.push(cell.v);
+          }
+        });
+      });
+
+      // 2. 设置Y轴起始值
+      if (allValues.length > 0) {
+        const dataMin = Math.min(...allValues);
+        const padding = (Math.max(...allValues) - dataMin) * 0.1;
+        yAxis.tickLabel.min = dataMin - padding;
+      } else {
+        yAxis.tickLabel.min = "dataMin";
+      }
+    }
+  }
+  console.log(chart_json);
 
   width = width ? width : 400;
   height = height ? height : 250;
