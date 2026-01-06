@@ -66,9 +66,15 @@ function getImagePosition(num, arr) {
   if (!Array.isArray(arr) || arr.length === 0) {
     return 0;
   }
-
   // 数字验证
-  if (typeof num !== "number" || isNaN(num) || num < 0) {
+  if (num == null) {
+    return 0;
+  }
+
+  // 尝试将 num 转换为数字
+  num = Number(num);
+
+  if (isNaN(num) || num < 0) {
     return 0;
   }
 
