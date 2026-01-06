@@ -11,7 +11,6 @@ export async function setEcharts(sheet, worksheet, workbook) {
   // 获取列宽和行高配置，如果没有则使用空对象
   const columnLen = (config && config.columnlen) || {};
   const rowLen = (config && config.rowlen) || {};
-
   // 将对象格式转换为数组格式
   const columnPositions = calculatePositionsFromLengths(columnLen, true);
   const rowPositions = calculatePositionsFromLengths(rowLen, false);

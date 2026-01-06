@@ -1,13 +1,25 @@
-import { seriesLoadScripts, loadLinks, arrayRemoveItem, } from "../../utils/util";
+import {
+  seriesLoadScripts,
+  loadLinks,
+  arrayRemoveItem,
+} from "../../utils/util";
 import { generateRandomKey, replaceHtml } from "../../utils/chartUtil";
 import { getdatabyselection, getcellvalue } from "../../global/getdata";
 import chartInfo from "../../store";
 import Store from "../../store";
 import { luckysheet_getcelldata } from "../../function/func";
-import { getSheetIndex, getRangetxt, getvisibledatacolumn, getvisibledatarow, } from "../../methods/get";
+import {
+  getSheetIndex,
+  getRangetxt,
+  getvisibledatacolumn,
+  getvisibledatarow,
+} from "../../methods/get";
 import { rowLocation, colLocation, mouseposition } from "../../global/location";
 import { setluckysheet_scroll_status } from "../../methods/set";
-import { luckysheetMoveHighlightRange2, luckysheetMoveEndCell, } from "../../controllers/sheetMove";
+import {
+  luckysheetMoveHighlightRange2,
+  luckysheetMoveEndCell,
+} from "../../controllers/sheetMove";
 import { isEditMode } from "../../global/validate";
 import luckysheetsizeauto from "../../controllers/resize";
 

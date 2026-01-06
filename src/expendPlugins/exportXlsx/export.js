@@ -20,7 +20,14 @@ async function localExport(order, success) {
 
   const workbook = new Excel.Workbook();
   // 写入工作薄
+  let i = 0;
   for (const sheet of exportSheet) {
+    // 跳转到工作表 i
+    luckysheet.setSheetActive(i);
+
+    // 等待500ms确保工作表切换完成
+    await new Promise(resolve => setTimeout(resolve, 500));
+
     const worksheet = await workbook.addWorksheet(sheet.name, {
       properties: {
         // 工作表标签颜色
@@ -31,7 +38,7 @@ async function localExport(order, success) {
       // 网格线
       views: [{ showGridLines: sheet.showGridLines === "1" }],
     });
-    // console.log("开始写入", sheet.name, sheet);
+
     // 设置工作表样式
     setDimensions(sheet.config, worksheet);
     setStyleAndValue(sheet.data, worksheet);
@@ -47,15 +54,15 @@ async function localExport(order, success) {
     setImages(sheet, worksheet, workbook);
     setHyperlink(sheet.hyperlink, worksheet);
     setFrozen(sheet.frozen, worksheet);
-    // console.log("结束写入", sheet.name, worksheet);
+    i++;
   }
+
   // 写入 buffer
-  workbook.xlsx.writeBuffer().then(data => {
-    const blob = new Blob([data], {
-      type: "application/vnd.ms-excel;charset=utf-8",
-    });
-    FileSaver.saveAs(blob, `${sheetInfo.title}.xlsx`);
+  const data = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([data], {
+    type: "application/vnd.ms-excel;charset=utf-8",
   });
+  FileSaver.saveAs(blob, `${sheetInfo.title}.xlsx`);
   success && success();
 }
 
