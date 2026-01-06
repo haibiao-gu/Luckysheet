@@ -27,7 +27,6 @@ export async function setEcharts(sheet, worksheet, workbook) {
           // 使用 html2canvas 将 DOM 元素转换为 canvas，然后获取图片数据
           const canvas = await html2canvas(chartElement, {
             backgroundColor: "#fff",
-            scale: 2, // 提高图片质量
           });
 
           const imgData = canvas.toDataURL("image/png");
