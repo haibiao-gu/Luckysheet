@@ -4,7 +4,7 @@ function setImages(sheet, worksheet, workbook) {
   const images = sheet.images;
   const config = sheet.config;
   if (typeof images != "object" || !images) return;
-  console.log("开始设置图片", images);
+  // console.log("开始设置图片", images);
   // 获取列宽和行高配置，如果没有则使用空对象
   const columnLen = (config && config.columnlen) || {};
   const rowLen = (config && config.rowlen) || {};
@@ -17,7 +17,7 @@ function setImages(sheet, worksheet, workbook) {
     // 检查图片数据完整性
     const item = images[key];
     if (!item || !item.src || !item.default) continue;
-    console.log("item", item);
+    // console.log("item", item);
 
     //开始行 开始列 结束行 结束列
     const imageId = workbook.addImage({

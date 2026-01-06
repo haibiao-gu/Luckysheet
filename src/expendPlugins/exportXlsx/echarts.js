@@ -6,7 +6,7 @@ export async function setEcharts(sheet, worksheet, workbook) {
   const echarts = sheet.chart || [];
   const config = sheet.config;
   if (typeof echarts != "object" || !echarts) return;
-  console.log("开始导出图表", echarts);
+  // console.log("开始导出图表", echarts);
 
   // 获取列宽和行高配置，如果没有则使用空对象
   const columnLen = (config && config.columnlen) || {};
@@ -21,7 +21,7 @@ export async function setEcharts(sheet, worksheet, workbook) {
     // 具体实现取决于 echarts 图表在 sheet 中的存储格式
     if (chart.chart_id) {
       const chartElement = document.getElementById(chart.chart_id);
-      console.log("chartElement", chartElement);
+      // console.log("chartElement", chartElement);
       if (chartElement) {
         try {
           // 使用 html2canvas 将 DOM 元素转换为 canvas，然后获取图片数据
@@ -40,8 +40,8 @@ export async function setEcharts(sheet, worksheet, workbook) {
 
           const col_st = getImagePosition(chart.left, columnPositions);
           const row_st = getImagePosition(chart.top, rowPositions);
-          console.log("tl", col_st, row_st);
-          console.log("ext", chart.width, chart.height);
+          // console.log("tl", col_st, row_st);
+          // console.log("ext", chart.width, chart.height);
           //模式1，图片左侧与luckysheet位置一样，像素比例保持不变，但是，右侧位置可能与原图所在单元格不一致
           worksheet.addImage(imageId, {
             tl: { col: col_st, row: row_st },

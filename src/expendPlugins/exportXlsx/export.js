@@ -47,7 +47,7 @@ async function localExport(order, success) {
     setImages(sheet, worksheet, workbook);
     setHyperlink(sheet.hyperlink, worksheet);
     setFrozen(sheet.frozen, worksheet);
-    console.log("结束写入", sheet.name, worksheet);
+    // console.log("结束写入", sheet.name, worksheet);
   }
   // 写入 buffer
   workbook.xlsx.writeBuffer().then(data => {
