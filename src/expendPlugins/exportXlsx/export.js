@@ -9,8 +9,9 @@ import { setHyperlink } from "./hyperlink";
 import { setFrozen } from "./frozen";
 import { setDimensions } from "./dimension";
 import { setHidden } from "./hidden";
+import { setEcharts } from "./echarts";
 
-function localExport(order, success) {
+async function localExport(order, success) {
   const sheetInfo = luckysheet.toJson();
   // console.log("开始导出", order, sheetInfo);
   // 获取需要导出的工作表
@@ -19,8 +20,8 @@ function localExport(order, success) {
 
   const workbook = new Excel.Workbook();
   // 写入工作薄
-  exportSheet.forEach(sheet => {
-    const worksheet = workbook.addWorksheet(sheet.name, {
+  for (const sheet of exportSheet) {
+    const worksheet = await workbook.addWorksheet(sheet.name, {
       properties: {
         // 工作表标签颜色
         tabColor: {
@@ -42,11 +43,12 @@ function localExport(order, success) {
     );
     // 处理隐藏的行和列
     setHidden(sheet.config, worksheet);
+    await setEcharts(sheet, worksheet, workbook);
     setImages(sheet, worksheet, workbook);
     setHyperlink(sheet.hyperlink, worksheet);
     setFrozen(sheet.frozen, worksheet);
-    // console.log("结束写入", sheet.name, worksheet);
-  });
+    console.log("结束写入", sheet.name, worksheet);
+  }
   // 写入 buffer
   workbook.xlsx.writeBuffer().then(data => {
     const blob = new Blob([data], {

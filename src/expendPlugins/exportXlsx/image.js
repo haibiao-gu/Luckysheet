@@ -1,10 +1,10 @@
 // 设置图片
-function setImages(thesheet, worksheet, workbook) {
+function setImages(sheet, worksheet, workbook) {
   // 安全地访问属性
-  const images = thesheet.images;
-  const config = thesheet.config;
+  const images = sheet.images;
+  const config = sheet.config;
   if (typeof images != "object" || !images) return;
-  // console.log("开始设置图片", images);
+  console.log("开始设置图片", images);
   // 获取列宽和行高配置，如果没有则使用空对象
   const columnLen = (config && config.columnlen) || {};
   const rowLen = (config && config.rowlen) || {};
@@ -15,14 +15,13 @@ function setImages(thesheet, worksheet, workbook) {
 
   for (let key in images) {
     // 检查图片数据完整性
-    if (!images[key] || !images[key].src || !images[key].default) continue;
-
-    // 通过 base64  将图像添加到工作簿
-    const myBase64Image = images[key].src;
-    //开始行 开始列 结束行 结束列
     const item = images[key];
+    if (!item || !item.src || !item.default) continue;
+    console.log("item", item);
+
+    //开始行 开始列 结束行 结束列
     const imageId = workbook.addImage({
-      base64: myBase64Image,
+      base64: item.src,
       extension: "png",
     });
 
