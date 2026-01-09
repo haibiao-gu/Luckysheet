@@ -89,6 +89,12 @@
             "url": "./assets/iconfont/Pacifico-Regular.ttf",
           },
         ],
+        uploadImage: function(files) {
+          return new Promise(function(resolve, reject) {
+            console.log("uploadImage", files);
+            resolve("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png");
+          });
+        },
         hook: {
           workbookSave: function() {
             // 执行实际的保存操作
@@ -179,7 +185,6 @@
           rangeDeleteBefore: function(range, data) {
             // console.dir(111);
           },
-
         },
         data:
           [sheetCell, sheetFormula, sheetConditionFormat, sheetSparkline, sheetTable, sheetComment, sheetPivotTableData, sheetPivotTable, sheetChart, sheetPicture, sheetDataVerification],

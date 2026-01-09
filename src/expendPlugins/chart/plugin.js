@@ -1,25 +1,13 @@
-import {
-  seriesLoadScripts,
-  loadLinks,
-  arrayRemoveItem,
-} from "../../utils/util";
+import { seriesLoadScripts, loadLinks, arrayRemoveItem, } from "../../utils/util";
 import { generateRandomKey, replaceHtml } from "../../utils/chartUtil";
 import { getdatabyselection, getcellvalue } from "../../global/getdata";
 import chartInfo from "../../store";
 import Store from "../../store";
 import { luckysheet_getcelldata } from "../../function/func";
-import {
-  getSheetIndex,
-  getRangetxt,
-  getvisibledatacolumn,
-  getvisibledatarow,
-} from "../../methods/get";
+import { getSheetIndex, getRangetxt, getvisibledatacolumn, getvisibledatarow, } from "../../methods/get";
 import { rowLocation, colLocation, mouseposition } from "../../global/location";
 import { setluckysheet_scroll_status } from "../../methods/set";
-import {
-  luckysheetMoveHighlightRange2,
-  luckysheetMoveEndCell,
-} from "../../controllers/sheetMove";
+import { luckysheetMoveHighlightRange2, luckysheetMoveEndCell, } from "../../controllers/sheetMove";
 import { isEditMode } from "../../global/validate";
 import luckysheetsizeauto from "../../controllers/resize";
 
@@ -391,9 +379,9 @@ function renderCharts(chartLists, isDemo) {
 
 function jfrefreshchartall(flowdata1, r_st, r_ed, c_st, c_ed) {
   const sheetInfo = Store.luckysheetfile.find(
-    item => item.index === Store.currentSheetIndex
+    item => item.index == Store.currentSheetIndex
   );
-  const charts = sheetInfo.chart;
+  const charts = sheetInfo?.chart;
   charts &&
     charts.forEach(item => {
       var getcelldata = luckysheet_getcelldata(
