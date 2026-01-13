@@ -1,5 +1,5 @@
 // 设置图片
-function setImages(sheet, worksheet, workbook) {
+async function setImages(sheet, worksheet, workbook) {
   // 安全地访问属性
   const images = sheet.images;
   const config = sheet.config;
@@ -18,6 +18,11 @@ function setImages(sheet, worksheet, workbook) {
     const item = images[key];
     if (!item || !item.src || !item.default) continue;
     // console.log("item", item);
+
+    // 网络图片转base64
+    if (item.src.startsWith("http")) {
+      item.src = await convertImageUrlToBase64(item.src);
+    }
 
     //开始行 开始列 结束行 结束列
     const imageId = workbook.addImage({
@@ -101,6 +106,43 @@ function getImagePosition(num, arr) {
   }
 
   return 0;
+}
+
+async function convertImageUrlToBase64(imageUrl) {
+  return new Promise((resolve, reject) => {
+    // 1. 发起请求获取图片Blob数据
+    fetch(imageUrl)
+      .then(async response => {
+        // 检查请求是否成功
+        if (!response.ok) {
+          reject(
+            new Error(`请求图片失败：${response.status} ${response.statusText}`)
+          );
+          return;
+        }
+        // 将响应转换为Blob格式
+        const blob = await response.blob();
+
+        // 2. 使用FileReader转换Blob为Base64
+        const reader = new FileReader();
+        // 读取成功的回调
+        reader.onload = () => {
+          // result即为Base64编码字符串
+          const base64Str = reader.result;
+          resolve(base64Str);
+        };
+        // 读取失败的回调
+        reader.onerror = error => {
+          reject(new Error(`转换Base64失败：${error}`));
+        };
+        // 开始读取Blob数据为DataURL（Base64格式）
+        reader.readAsDataURL(blob);
+      })
+      .catch(error => {
+        // 捕获网络请求错误（如跨域、URL无效）
+        reject(new Error(`网络请求错误：${error.message}`));
+      });
+  });
 }
 
 export { setImages, calculatePositionsFromLengths, getImagePosition };

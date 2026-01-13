@@ -51,7 +51,7 @@ async function localExport(order, success) {
     // 处理隐藏的行和列
     setHidden(sheet.config, worksheet);
     await setEcharts(sheet, worksheet, workbook);
-    setImages(sheet, worksheet, workbook);
+    await setImages(sheet, worksheet, workbook);
     setHyperlink(sheet.hyperlink, worksheet);
     setFrozen(sheet.frozen, worksheet);
     i++;
