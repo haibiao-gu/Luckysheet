@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/haibiao-gu/Luckysheet/compare/v3.0.0...v3.1.0) (2026-05-18)
+
+
+### Features
+
+* **chart:** 更新图表插件依赖加载方式 ([10ad033](https://github.com/haibiao-gu/Luckysheet/commit/10ad033ebf3b12723dd2ceba38de2e51494cd8ec))
+* **config:** 添加图片上传功能配置 ([c98a077](https://github.com/haibiao-gu/Luckysheet/commit/c98a07779ade7543ef5d20cc1541164ad44ecec2))
+* **core:** 添加核心样式z-index属性 ([5fef532](https://github.com/haibiao-gu/Luckysheet/commit/5fef53203002b70ce02fc231712589dc4fc46adf))
+* **excel:** 支持网络图片导出到Excel文件 ([5295ed3](https://github.com/haibiao-gu/Luckysheet/commit/5295ed3d5501f5463378c857028e119a3a5345e1))
+* **exportXlsx:** 添加多工作表导出支持和导入格式化 ([4b6f470](https://github.com/haibiao-gu/Luckysheet/commit/4b6f47010550da0ae5b489ea2d91523f2e06ce96))
+* **exportXlsx:** 添加echarts图表导出功能 ([4896495](https://github.com/haibiao-gu/Luckysheet/commit/4896495a402242d6c182056e486bca27aabbdaba))
+* **exportXlsx:** 增强Excel导出功能支持更多样式和配置 ([87aadf9](https://github.com/haibiao-gu/Luckysheet/commit/87aadf92aa38b6cc513a4c04cef9cc948a60b703))
+* **protection:** 添加工作表保护功能并优化相关交互 ([304573e](https://github.com/haibiao-gu/Luckysheet/commit/304573e0401ebb1ad1e7dc39f1e19fbedce83685))
+
+
+### Bug Fixes
+
+* **exportXlsx:** 优化图像处理中的数字验证逻辑 ([d473871](https://github.com/haibiao-gu/Luckysheet/commit/d473871d91f2477211c5708382f9f231c5c390c7))
+
 ## 3.0.0 (2025-12-16)
 
 
