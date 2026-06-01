@@ -6239,6 +6239,20 @@ export default {
       ],
     },
   },
+  STDEV_S: {
+    d: "Estimates the standard deviation based on a sample (same as STDEV).",
+    a: "Estimates the standard deviation based on a sample.",
+    p: [
+      {
+        name: "value1",
+        detail: "The first value or range of the sample.",
+      },
+      {
+        name: "value2, ...",
+        detail: "[optional] - Additional values or ranges of the sample.",
+      },
+    ],
+  },
   toolbar: {
     save: "Save",
     undo: "Deshacer",

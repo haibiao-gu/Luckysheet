@@ -1152,6 +1152,25 @@ export default [
     ],
   },
   {
+    n: "STDEV_S",
+    t: 1,
+    m: [1, 255],
+    p: [
+      {
+        example: "1",
+        require: "m",
+        repeat: "n",
+        type: "rangenumber",
+      },
+      {
+        example: "2",
+        require: "o",
+        repeat: "y",
+        type: "rangenumber",
+      },
+    ],
+  },
+  {
     n: "STDEVP",
     t: 1,
     m: [1, 255],

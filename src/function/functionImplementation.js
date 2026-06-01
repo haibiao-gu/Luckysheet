@@ -1,10 +1,5 @@
 import luckysheetConfigsetting from "../controllers/luckysheetConfigsetting";
-import {
-  luckysheet_getcelldata,
-  luckysheet_parseData,
-  luckysheet_getValue,
-  luckysheet_calcADPMM,
-} from "./func";
+import { luckysheet_getcelldata, luckysheet_parseData, luckysheet_getValue, luckysheet_calcADPMM, } from "./func";
 import { inverse } from "./matrix_methods";
 import { getSheetIndex, getluckysheetfile, getRangetxt } from "../methods/get";
 import menuButton from "../controllers/menuButton";
@@ -22,16 +17,7 @@ import { getObjType, ABCatNum, chatatABC, numFormat } from "../utils/util";
 import Store from "../store";
 import dayjs from "dayjs";
 import numeral from "numeral";
-import {
-  getAirTable,
-  companyTargetData,
-  companyTargetData10,
-  companyTargetData11,
-  companyTargetData12,
-  excelToLuckyArray,
-  excelToArray,
-  askAIData,
-} from "../demoData/getTargetData";
+import { getAirTable, companyTargetData, companyTargetData10, companyTargetData11, companyTargetData12, excelToLuckyArray, excelToArray, askAIData, } from "../demoData/getTargetData";
 import { setcellvalue } from "../global/setdata"; //公式函数计算
 
 //公式函数计算
@@ -125,6 +111,12 @@ const functionImplementation = {
       err = formula.errorInfo(err);
       return [formula.error.v, err];
     }
+  },
+  STDEV_S: function () {
+    return window.luckysheet_function.STDEV.f.apply(
+      window.luckysheet_function.STDEV,
+      arguments
+    );
   },
   SUM: function () {
     //必要参数个数错误检测
